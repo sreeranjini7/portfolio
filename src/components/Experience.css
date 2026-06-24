@@ -1,0 +1,116 @@
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+}
+.exp-timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.exp-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  overflow: hidden;
+  opacity: 0; transform: translateX(-16px);
+  transition: opacity 0.5s var(--delay,0s) ease, transform 0.5s var(--delay,0s) ease,
+              border-color 0.2s, box-shadow 0.2s;
+}
+.exp-card.visible { opacity: 1; transform: none; }
+.exp-card:hover { border-color: rgba(255,255,255,0.12); box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
+
+.exp-card-accent {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--accent, var(--violet));
+}
+.exp-card-body { padding: 1.5rem 1.5rem 1.5rem 1.75rem; }
+
+.exp-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;
+}
+.exp-role {
+  font-family: var(--font-display); font-size: 1.15rem;
+  color: var(--white); margin-bottom: 0.2rem;
+}
+.exp-company { font-family: var(--font-label); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; color: var(--violet-light); text-transform: uppercase; }
+.exp-meta { text-align: right; }
+.exp-period { display: block; font-size: 0.8rem; color: var(--grey); }
+.exp-loc { display: block; font-size: 0.72rem; color: var(--grey-dark); margin-top: 0.1rem; }
+
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+.exp-bullets li {
+  font-size: 0.875rem; color: var(--grey); line-height: 1.6;
+  padding-left: 1.1rem; position: relative;
+}
+.exp-bullets li::before {
+  content: '▸'; position: absolute; left: 0;
+  color: var(--accent, var(--violet)); font-size: 0.7rem; top: 3px;
+}
+
+.exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.etag {
+  font-family: var(--font-label); font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--grey); background: rgba(255,255,255,0.04);
+  border: 1px solid var(--card-border);
+  padding: 0.2rem 0.6rem; border-radius: 4px;
+}
+
+/* Education sidebar */
+.edu-sidebar {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s 0.2s ease, transform 0.6s 0.2s ease;
+}
+.edu-sidebar.visible { opacity: 1; transform: none; }
+
+.edu-card {
+  background: var(--card); border: 1px solid var(--card-border);
+  border-radius: 14px; padding: 2rem 1.5rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  position: relative; overflow: hidden;
+}
+.edu-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--violet), var(--amber));
+}
+.edu-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+.edu-badge {
+  display: inline-block; font-family: var(--font-label);
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--amber); background: var(--amber-glow);
+  border: 1px solid rgba(245,158,11,0.25);
+  padding: 0.2rem 0.7rem; border-radius: 100px;
+  width: fit-content;
+}
+.edu-degree {
+  font-family: var(--font-display); font-size: 1.05rem;
+  color: var(--white); line-height: 1.3; margin-top: 0.25rem;
+}
+.edu-school {
+  font-family: var(--font-label); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.04em; color: var(--violet-light);
+}
+.edu-loc { font-size: 0.75rem; color: var(--grey); }
+.edu-cgpa {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  margin-top: 1rem; padding-top: 1rem;
+  border-top: 1px solid var(--card-border);
+}
+.cgpa-label {
+  font-family: var(--font-label); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey);
+}
+.cgpa-value {
+  font-family: var(--font-display); font-size: 2rem; color: var(--white); line-height: 1;
+}
+.cgpa-value span { font-size: 1rem; color: var(--grey); }
+
+@media (max-width: 900px) {
+  .exp-grid { grid-template-columns: 1fr; }
+  .edu-sidebar { order: -1; }
+}
+@media (max-width: 500px) {
+  .exp-meta { text-align: left; }
+}

@@ -1,0 +1,43 @@
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.4rem 0;
+  transition: background 0.35s, padding 0.35s, box-shadow 0.35s;
+}
+.navbar.scrolled {
+  background: rgba(13,13,13,0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  padding: 0.9rem 0;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-label); font-size: 1.1rem; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
+  color: var(--white); user-select: none;
+}
+.nav-logo em { font-style: normal; color: var(--violet-light); }
+.nav-links { display: flex; list-style: none; gap: 0.15rem; }
+.nav-link {
+  background: none; border: none; font-family: var(--font-label);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--grey); padding: 0.45rem 0.9rem;
+  border-radius: 6px; cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-link:hover, .nav-link.active { color: var(--white); background: rgba(255,255,255,0.06); }
+.nav-link.active { color: var(--violet-light); }
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+@media (max-width: 700px) {
+  .hamburger { display: flex; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: rgba(13,13,13,0.97); border-bottom: 1px solid var(--card-border); padding: 0.5rem 1rem; }
+  .nav-links.open { display: flex; }
+  .nav-link { width: 100%; text-align: left; padding: 0.7rem 1rem; }
+}
